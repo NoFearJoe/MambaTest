@@ -29,8 +29,13 @@ final class View: UIViewController {
         setupDataSource()
         subscribeToViewModelObservables()
     }
-    
-    
+
+}
+
+// MARK: - UI setup
+
+extension View {
+
     fileprivate func setupTableView() {
         tableView.delegate = dataSource
         tableView.dataSource = dataSource
@@ -47,8 +52,13 @@ final class View: UIViewController {
             self?.showEntities(entities)
         }
     }
-    
-    
+
+}
+
+// MARK: - Actions
+
+extension View {
+
     @IBAction func addEntity() {
         viewModel.addEntity()
     }
@@ -59,13 +69,19 @@ final class View: UIViewController {
 
 }
 
+// MARK: - UI update methods
+
 extension View {
 
     func showEntities(_ entities: [ViewModelEntity]) {
         dataSource.entities = entities
         tableView.reloadData()
         
-        hintLabel.isHidden = entities.count > 0
+        setHintHidden(entities.count > 0)
+    }
+    
+    func setHintHidden(_ hidden: Bool) {
+        hintLabel.isHidden = hidden
     }
 
 }

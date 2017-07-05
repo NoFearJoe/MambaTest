@@ -9,6 +9,8 @@
 import Foundation
 
 
+// MARK: - ViewModel input protocol
+
 protocol ViewModelInput: class {
     var entitiesObservable: Observable<[ViewModelEntity]>! { get }
     
@@ -17,13 +19,15 @@ protocol ViewModelInput: class {
 }
 
 
+// MARK: - ViewModel
+
 final class ViewModel<T: AnyEntity> {
     var model: Model<T>!
     var entitiesObservable: Observable<[ViewModelEntity]>!
     
     func setupObservable() {
         entitiesObservable = Observable<[ViewModelEntity]>(handler: { [weak self] observer in
-            self?.model.onStorageUpdate = { entities in
+            self?.model.onStorageUpdate = { [weak self] entities in
                 guard let `self` = self else { return }
                 
                 let viewModelEntities = self.mapEntities(entities)
@@ -33,6 +37,9 @@ final class ViewModel<T: AnyEntity> {
     }
     
 }
+
+
+// MARK: - ViewModel input protocol implementation
 
 extension ViewModel: ViewModelInput {
 
@@ -64,7 +71,10 @@ extension ViewModel: ViewModelInput {
 
 }
 
-extension ViewModel {
+
+// MARK: - ViewModel private methods
+
+fileprivate extension ViewModel {
 
     fileprivate func mapEntities(_ entities: [T]) -> [ViewModelEntity] {
         return entities.flatMap { entity in

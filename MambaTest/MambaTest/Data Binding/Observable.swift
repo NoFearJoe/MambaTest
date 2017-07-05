@@ -30,12 +30,18 @@ final class Observable<T> {
     }
     
     
+    
     fileprivate var subscriber: Subscriber?
     
     
+    /**
+     Создает экземпляр Observable
+     
+     - Parameter handler: Замыкание, в которое передается Observer для настройки
+    */
     init(handler: (Observer) -> Void) {
-        let observer = Observer() { value in
-            self.subscriber?(value)
+        let observer = Observer() { [weak self] value in
+            self?.subscriber?(value)
         }
         
         handler(observer)
