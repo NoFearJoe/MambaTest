@@ -52,6 +52,7 @@
 		968698711F0CDDE000388CED /* Observable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		968698731F0CF01F00388CED /* ViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewDataSource.swift; sourceTree = "<group>"; };
 		968698751F0CF3CD00388CED /* ModelAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelAssembly.swift; sourceTree = "<group>"; };
+		968698771F0D7F3800388CED /* Observable(Deprecated).swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Observable(Deprecated).swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				968698711F0CDDE000388CED /* Observable.swift */,
+				968698771F0D7F3800388CED /* Observable(Deprecated).swift */,
 			);
 			path = "Data Binding";
 			sourceTree = "<group>";
@@ -469,6 +471,7 @@
 				9686985E1F0CD2C000388CED /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9686985F1F0CD2C000388CED /* Build configuration list for PBXNativeTarget "MambaTestTests" */ = {
 			isa = XCConfigurationList;
@@ -477,6 +480,7 @@
 				968698611F0CD2C000388CED /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -17,6 +17,7 @@ final class Observable<T> {
     fileprivate lazy var subscribers = [Subscriber]()
     
     var value: T {
+        // Если этот вариант тоже попадает под условие "не использовать KVO", то есть вторая реализация в файле 'Observable(Deprecated)'
         didSet {
             subscribers.forEach { $0(value) }
         }
