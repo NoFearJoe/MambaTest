@@ -11,8 +11,9 @@ import Foundation
 
 // MARK: - ViewModel input protocol
 
+/// Интерфейс, описывающий методы, доступные другим классам
 protocol ViewModelInput: class {
-    var entitiesObservable: Observable<[ViewModelEntity]>! { get }
+    var entities: Observable<[ViewModelEntity]>! { get }
     
     func addEntity()
     func removeEntity(by id: Int)
@@ -22,20 +23,17 @@ protocol ViewModelInput: class {
 // MARK: - ViewModel
 
 final class ViewModel<T: AnyEntity> {
-    var model: Model<T>!
-    var entitiesObservable: Observable<[ViewModelEntity]>!
-    
-    func setupObservable() {
-        entitiesObservable = Observable<[ViewModelEntity]>(handler: { [weak self] observer in
-            self?.model.onStorageUpdate = { [weak self] entities in
+    var model: Model<T>! {
+        didSet {
+            entities = Observable<[ViewModelEntity]>(value: self.mapEntities(model.storage.obtainEntities()))
+            model.onStorageUpdate = { [weak self] entities in
                 guard let `self` = self else { return }
-                
-                let viewModelEntities = self.mapEntities(entities)
-                observer.next(value: viewModelEntities)
+                self.entities.value = self.mapEntities(entities)
             }
-        })
+        }
     }
     
+    var entities: Observable<[ViewModelEntity]>!
 }
 
 
@@ -44,6 +42,7 @@ final class ViewModel<T: AnyEntity> {
 extension ViewModel: ViewModelInput {
 
     func addEntity() {
+        // И так сойдет
         let randomID = Int(arc4random_uniform(100000))
         
         var randomEntity: T?

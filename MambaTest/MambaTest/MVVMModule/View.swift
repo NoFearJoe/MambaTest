@@ -42,15 +42,11 @@ extension View {
     }
     
     fileprivate func setupDataSource() {
-        dataSource.didSelectEntity = { [unowned self] entity in
-            self.removeEntity(entity)
-        }
+        dataSource.didSelectEntity = removeEntity        
     }
     
     fileprivate func subscribeToViewModelObservables() {
-        viewModel.entitiesObservable.subscribe { [weak self] entities in
-            self?.showEntities(entities)
-        }
+        viewModel.entities ~> showEntities
     }
 
 }

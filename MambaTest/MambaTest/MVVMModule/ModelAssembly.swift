@@ -15,7 +15,6 @@ final class ModuleAssembly<T: AnyEntity> {
         let viewModel = ViewModel<T>()
         
         viewModel.model = model
-        viewModel.setupObservable()
         
         view.viewModel = viewModel
     }

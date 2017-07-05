@@ -7,53 +7,48 @@
 //
 
 
-/** 
- Простой binding.
- 
- Observable - это объект, на который можно подписаться и получать изменения.
- 
- Observer - это объект, который передается в замыкании при создании Observable. Нужен для передачи нового значения.
- 
- В данной реализации поддерживается только один подписчик.
-*/
+// MARK: - Простой биндинг начинается здесь
+
+
 final class Observable<T> {
-    
+
     typealias Subscriber = (T) -> Void
     
+    fileprivate lazy var subscribers = [Subscriber]()
     
-    struct Observer {
-        let onChange: (T) -> Void
-        
-        func next(value: T) {
-            onChange(value)
+    var value: T {
+        didSet {
+            subscribers.forEach { $0(value) }
         }
     }
     
-    
-    
-    fileprivate var subscriber: Subscriber?
-    
-    
     /**
-     Создает экземпляр Observable
-     
-     - Parameter handler: Замыкание, в которое передается Observer для настройки
+     Создает новый Observable с каким-то значением
+ 
+     - Parameter value: Значение переменной, на изменение которой будут подписываться другие классы
     */
-    init(handler: (Observer) -> Void) {
-        let observer = Observer() { [weak self] value in
-            self?.subscriber?(value)
-        }
-        
-        handler(observer)
+    init(value: T) {
+        self.value = value
     }
     
     /**
-     Подписывается на изменения значения.
+     Добавляет подписчика и передает ему текущее значение
      
-     - Parameter onUpdate: Замыкание, которое вызывается после обновления значения
+     - Parameter subscriber: Подписчик
     */
-    func subscribe(onUpdate: @escaping Subscriber) {
-        subscriber = onUpdate
+    func bind(subscriber: @escaping Subscriber) {
+        subscribers.append(subscriber)
+        subscriber(value)
     }
     
 }
+
+
+infix operator ~>
+
+/// Просто сахар
+func ~> <T>(observable: Observable<T>, subscriber: @escaping (T) -> Void) {
+    observable.bind(subscriber: subscriber)
+}
+
+
