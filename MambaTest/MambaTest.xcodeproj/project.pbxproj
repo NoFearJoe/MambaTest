@@ -15,6 +15,12 @@
 		968698641F0CD30F00388CED /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968698631F0CD30F00388CED /* Model.swift */; };
 		968698661F0CD31600388CED /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968698651F0CD31600388CED /* View.swift */; };
 		968698681F0CD31E00388CED /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968698671F0CD31E00388CED /* ViewModel.swift */; };
+		9686986B1F0CD56B00388CED /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9686986A1F0CD56B00388CED /* Storage.swift */; };
+		9686986D1F0CD58800388CED /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9686986C1F0CD58800388CED /* Entity.swift */; };
+		9686986F1F0CD89500388CED /* ViewModelEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9686986E1F0CD89500388CED /* ViewModelEntity.swift */; };
+		968698721F0CDDE000388CED /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968698711F0CDDE000388CED /* Observable.swift */; };
+		968698741F0CF01F00388CED /* ViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968698731F0CF01F00388CED /* ViewDataSource.swift */; };
+		968698761F0CF3CD00388CED /* ModelAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968698751F0CF3CD00388CED /* ModelAssembly.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +46,12 @@
 		968698631F0CD30F00388CED /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		968698651F0CD31600388CED /* View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		968698671F0CD31E00388CED /* ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		9686986A1F0CD56B00388CED /* Storage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		9686986C1F0CD58800388CED /* Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
+		9686986E1F0CD89500388CED /* ViewModelEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModelEntity.swift; sourceTree = "<group>"; };
+		968698711F0CDDE000388CED /* Observable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		968698731F0CF01F00388CED /* ViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewDataSource.swift; sourceTree = "<group>"; };
+		968698751F0CF3CD00388CED /* ModelAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelAssembly.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +93,8 @@
 		968698411F0CD2C000388CED /* MambaTest */ = {
 			isa = PBXGroup;
 			children = (
+				968698691F0CD55E00388CED /* Data Access Layer */,
+				968698701F0CDD7000388CED /* Data Binding */,
 				968698621F0CD30100388CED /* MVVMModule */,
 				968698421F0CD2C000388CED /* AppDelegate.swift */,
 				968698461F0CD2C000388CED /* Main.storyboard */,
@@ -103,11 +117,31 @@
 		968698621F0CD30100388CED /* MVVMModule */ = {
 			isa = PBXGroup;
 			children = (
+				9686986E1F0CD89500388CED /* ViewModelEntity.swift */,
 				968698631F0CD30F00388CED /* Model.swift */,
-				968698651F0CD31600388CED /* View.swift */,
 				968698671F0CD31E00388CED /* ViewModel.swift */,
+				968698651F0CD31600388CED /* View.swift */,
+				968698731F0CF01F00388CED /* ViewDataSource.swift */,
+				968698751F0CF3CD00388CED /* ModelAssembly.swift */,
 			);
 			path = MVVMModule;
+			sourceTree = "<group>";
+		};
+		968698691F0CD55E00388CED /* Data Access Layer */ = {
+			isa = PBXGroup;
+			children = (
+				9686986C1F0CD58800388CED /* Entity.swift */,
+				9686986A1F0CD56B00388CED /* Storage.swift */,
+			);
+			path = "Data Access Layer";
+			sourceTree = "<group>";
+		};
+		968698701F0CDD7000388CED /* Data Binding */ = {
+			isa = PBXGroup;
+			children = (
+				968698711F0CDDE000388CED /* Observable.swift */,
+			);
+			path = "Data Binding";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -160,7 +194,7 @@
 				TargetAttributes = {
 					9686983E1F0CD2C000388CED = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = H7P63R6R55;
+						DevelopmentTeam = 485UNLA592;
 						ProvisioningStyle = Automatic;
 					};
 					968698521F0CD2C000388CED = {
@@ -214,10 +248,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9686986F1F0CD89500388CED /* ViewModelEntity.swift in Sources */,
+				968698721F0CDDE000388CED /* Observable.swift in Sources */,
 				968698431F0CD2C000388CED /* AppDelegate.swift in Sources */,
 				968698641F0CD30F00388CED /* Model.swift in Sources */,
+				9686986D1F0CD58800388CED /* Entity.swift in Sources */,
+				968698761F0CF3CD00388CED /* ModelAssembly.swift in Sources */,
+				968698741F0CF01F00388CED /* ViewDataSource.swift in Sources */,
 				968698681F0CD31E00388CED /* ViewModel.swift in Sources */,
 				968698661F0CD31600388CED /* View.swift in Sources */,
+				9686986B1F0CD56B00388CED /* Storage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,7 +398,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = H7P63R6R55;
+				DEVELOPMENT_TEAM = 485UNLA592;
 				INFOPLIST_FILE = MambaTest/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -372,7 +412,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = H7P63R6R55;
+				DEVELOPMENT_TEAM = 485UNLA592;
 				INFOPLIST_FILE = MambaTest/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

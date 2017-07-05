@@ -6,4 +6,17 @@
 //  Copyright © 2017 IK. All rights reserved.
 //
 
-import Foundation
+
+final class Model<T: AnyEntity> {
+
+    let storage = Storage<T>()
+    
+    var onStorageUpdate: (([T]) -> Void)?
+    
+    
+    func perfromUpdate(changes: (Storage<T>) -> Void) {
+        changes(storage)
+        onStorageUpdate?(storage.obtainEntities())
+    }
+
+}
