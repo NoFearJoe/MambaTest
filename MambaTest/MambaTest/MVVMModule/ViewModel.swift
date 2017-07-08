@@ -25,7 +25,7 @@ protocol ViewModelInput: class {
 final class ViewModel<T: AnyEntity> {
     var model: Model<T>! {
         didSet {
-            entities = Observable<[ViewModelEntity]>(value: self.mapEntities(model.storage.obtainEntities()))
+            entities = Observable<[T]>(value: model.storage.obtainEntities()).map(mapEntities)
             model.onStorageUpdate = { [weak self] entities in
                 guard let `self` = self else { return }
                 self.entities.value = self.mapEntities(entities)

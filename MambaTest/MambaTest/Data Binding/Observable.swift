@@ -42,6 +42,17 @@ final class Observable<T> {
         subscriber(value)
     }
     
+    /**
+     Преобразование значения Observable к другому типу
+     
+     - Parameter mapping: Функция в которой происходит преобразование
+     
+     - Returns: Observable нового типа
+    */
+    func map<Target>(_ mapping: (T) -> Target) -> Observable<Target> {
+        return Observable<Target>(value: mapping(self.value))
+    }
+    
 }
 
 
@@ -51,5 +62,3 @@ infix operator ~>
 func ~> <T>(observable: Observable<T>, subscriber: @escaping (T) -> Void) {
     observable.bind(subscriber: subscriber)
 }
-
-
